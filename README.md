@@ -37,6 +37,8 @@ jzc@125295:~$ export PYTHONIOENCODING="utf-8"
 jzc@125295:~$ echo $PYTHONIOENCODING
 utf-8
 jzc@125295:~$ python3 /home/jzc/Tieba/main.py
+```
+```
 Login: 53y7fhy
 Already signed in 鬼
 Already signed in oblivious

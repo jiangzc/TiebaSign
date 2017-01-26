@@ -18,9 +18,6 @@ def open1(file, mode, *args, **kwargs):
 
 
 def load_cookies(path):
-    '''
-    Loading Cookie from Web Browser
-    '''
     with open1(path, 'r&') as f:
         data = json.load(f)
     cookies = dict()
@@ -30,13 +27,14 @@ def load_cookies(path):
 
 
 def main():
+    print("Local Time:", time.asctime(time.localtime()))
+    print("\r\n")
     users_path = [x for x in os.listdir(PATH) if x.endswith(".json")]
     for path in users_path:
         user = Tieba(load_cookies(path))
         for name in user.get_likes():
             user.sign(name)
+            print("\r\n")
             time.sleep(10)
 
-
-if __name__ == "__main__":
-    main()
+main()
