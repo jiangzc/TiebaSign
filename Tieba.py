@@ -43,11 +43,11 @@ class Tieba(Baidu.Baidu):
         tieba_url = "http://tieba.baidu.com/f?kw={0}&fr=index".format(tieba_name)
         if self._check_sign(tieba_url):
             print("Already signed in", tieba_name)
-            return
+            return False
         tbs = self._get_tbs(tieba_url)
         if not tbs:
             print("Failed to grasp ", tieba_name, " !")
-            return
+            return False
         sign_url = "http://tieba.baidu.com/sign/add"
         response = self.session.post(
             sign_url,
@@ -60,8 +60,10 @@ class Tieba(Baidu.Baidu):
         data = json.loads(response.text)
         if data['no'] == 0:
             print("Signed successfully in", tieba_name)
+            return True
         else:
             print("Failed to sign, reason:", data['error'], tieba_name)
+            return False
 
     def reply(self, tid, content):
         if 'p' in str(tid):

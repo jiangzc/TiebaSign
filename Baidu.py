@@ -22,7 +22,8 @@ class Baidu():
         self.session = requests.session()
         self.session.cookies.update(cookies)
         self.session.headers["User-Agent"] = "Mozilla/5.0 Chrome/53.0.2785.143 Safari/537.36"
-        print("Login:", self.get_username())
+        self.username = self.get_username() or self.get_username() or self.get_username()
+        print("Login:", self.username)
 
     def check_login(self):
         res = self.session.get(self.base_url)
@@ -37,3 +38,4 @@ class Baidu():
             return match.group(1)
         else:
             print("Fail to get username!")
+            return None
