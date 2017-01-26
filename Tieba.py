@@ -23,6 +23,11 @@ class Tieba(Baidu.Baidu):
         stoken = re.search("STOKEN=(.+?);", res.headers['Set-Cookie']).group(1)
         self.session.cookies["STOKEN"] = stoken
 
+    def _check_sign(self, url):
+        res = self.session.get(url)
+        return "'isSignIn':1" in res.text
+
+
     def get_likes(self):
         #self._set_stoken()
         res = self.session.get('http://tieba.baidu.com/f/like/mylike?pn=1', allow_redirects=False)
@@ -36,6 +41,9 @@ class Tieba(Baidu.Baidu):
 
     def sign(self, tieba_name):
         tieba_url = "http://tieba.baidu.com/f?kw={0}&fr=index".format(tieba_name)
+        if self._check_sign(tieba_url):
+            print("Already signed in", tieba_name)
+            return
         tbs = self._get_tbs(tieba_url)
         if not tbs:
             print("Failed to grasp ", tieba_name, " !")

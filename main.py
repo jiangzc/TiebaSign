@@ -35,7 +35,7 @@ def main():
         user = Tieba(load_cookies(path))
         for name in user.get_likes():
             user.sign(name)
-            time.sleep(30)
+            time.sleep(10)
 
 
 if __name__ == "__main__":

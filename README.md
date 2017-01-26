@@ -30,3 +30,14 @@
 3.把user.json放入Tieba文件夹
 
 4.运行main.py
+
+##输出样本
+```
+jzc@125295:~$ export PYTHONIOENCODING="utf-8"
+jzc@125295:~$ echo $PYTHONIOENCODING
+utf-8
+jzc@125295:~$ python3 /home/jzc/Tieba/main.py
+Login: 53y7fhy
+Already signed in 鬼
+Already signed in oblivious
+```
