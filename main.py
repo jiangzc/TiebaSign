@@ -33,9 +33,6 @@ def main():
     for path in users_path:
         user = Tieba(load_cookies(path))
         for name in user.get_likes():
-            if user.sign(name):
-                time.sleep(10)
-            else:
-                time.sleep(1)
-        print("\r\n")
+            user.sign_Wap(name)
+
 main()

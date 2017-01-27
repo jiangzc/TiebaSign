@@ -21,7 +21,7 @@ class Baidu():
         self.base_url = "https://www.baidu.com"
         self.session = requests.session()
         self.session.cookies.update(cookies)
-        self.session.headers["User-Agent"] = "Mozilla/5.0 Chrome/53.0.2785.143 Safari/537.36"
+        self.session.headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0"
         self.username = self.get_username() or self.get_username() or self.get_username()
         print("Login:", self.username)
 
