@@ -17,22 +17,28 @@ def open1(file, mode, *args, **kwargs):
         return _open(file, mode[:-1], *args, **kwargs)
 
 
-def load_cookies(path):
-    with open1(path, 'r&') as f:
+def load_cookies(filename):
+    with open1(filename, 'r&') as f:
         data = json.load(f)
     cookies = dict()
     for item in data:
         cookies[item["name"]] = item["value"]
     return cookies
 
+def load_files(dirpath):
+    files_name = [x for x in os.listdir(dirpath) if x.endswith(".json")]
+    users = list()
+    for file in files_name:
+        users.append(Tieba(load_cookies(file)))
+    return users
 
 def main():
     print("Local Time:", time.asctime(time.localtime()))
     print("\r\n")
-    users_path = [x for x in os.listdir(PATH) if x.endswith(".json")]
-    for path in users_path:
-        user = Tieba(load_cookies(path))
+    users = load_files(PATH)
+    for user in users:
         for name in user.get_likes():
-            user.sign_Wap(name)
+            if user.sign_Wap(name):
+                time.sleep(10)
 
 main()

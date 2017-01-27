@@ -27,7 +27,6 @@ class Tieba(Baidu.Baidu):
         res = self.session.get("http://tieba.baidu.com/mo/m?kw=" + tieba_name)
         return "已签到" in res.text
 
-
     def get_likes(self):
         #self._set_stoken()
         res = self.session.get('http://tieba.baidu.com/f/like/mylike?pn=1', allow_redirects=False)
@@ -75,9 +74,6 @@ class Tieba(Baidu.Baidu):
         if match:
             sign_url = "http://tieba.baidu.com" + match.group(1)
             sign_url = sign_url.replace("&amp;", "&")
-            print(sign_url)
-            self.session.headers["Referer"] = "http://tieba.baidu.com/mo/m?kw=" + urllib.request.quote(tieba_name)
-
             res = self.session.get(sign_url)
 
         if "已签到" in res.text:
@@ -86,10 +82,6 @@ class Tieba(Baidu.Baidu):
         else:
             print("Fail to sign in", tieba_name)
             return False
-
-
-
-
 
     def reply(self, tid, content):
         if 'p' in str(tid):
