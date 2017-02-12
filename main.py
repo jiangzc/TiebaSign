@@ -44,10 +44,12 @@ def main():
     print("\r\n")
     users = load_files(PATH)
     for user in users:
+        print(user.get_likes())
+        '''
         print(user.username, "Signing")
         for name in user.get_likes():
             if user.sign_Wap(name):
                 time.sleep(10)
-        print("\r\n")
+        print("\r\n")'''
 
 main()
