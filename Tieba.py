@@ -18,6 +18,7 @@ class Tieba(Baidu.Baidu):
         else:
             return ""
 
+    @Retry
     def _check_sign(self, tieba_name):
         res = self.session.get("http://tieba.baidu.com/mo/m?kw=" + tieba_name)
         return "已签到" in res.text
