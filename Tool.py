@@ -69,6 +69,12 @@ class dashboard():
         sys.stdout = self.__console
         self.clear()
 
+    def enter(self):
+        self.__enter__()
+
+    def exit(self):
+        sys.stdout = self.__console
+
     def __enter__(self):
         self.__init__()
         sys.stdout = self

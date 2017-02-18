@@ -1,4 +1,5 @@
 import smtplib
+from email.mime.text import MIMEText
 
 
 class Email():
@@ -7,23 +8,15 @@ class Email():
         self.server.ehlo()
         self.server.login(gmail_user, gmail_password)
 
-    def __enter__(self):
-        return self.server
-
-    def __exit__(self):
-        self.server.close()
-
     def sendmail(self, _from, _to, subject, content):
         if type(_to) == str:
             _to = [_to]
-        email_text = '''\
-        From: %s
-        To: %s
-        Subject: %s
-
-        %s
-        ''' % (_from, ", ".join(_to), subject, content)
-        self.server.sendmail(_from, _to, email_text)
+        msg = MIMEText(content, 'plain', 'utf-8')
+        msg["Subject"] = subject
+        msg["From"] = _from
+        msg["To"] = ", ".join(_to)
+        self.server.sendmail(_from, _to, msg.as_string())
 
     def close(self):
         self.server.close()
+
