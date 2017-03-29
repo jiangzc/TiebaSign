@@ -32,7 +32,6 @@ def load_cookies(filename):
         pass
 
 
-
 def load_files(dirpath):
     files_name = [x for x in os.listdir(dirpath) if x.endswith(".json") or x.endswith(".cookie")]
     users = list()

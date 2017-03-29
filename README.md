@@ -1,6 +1,6 @@
 # TiebaSign
 贴吧签到，模拟手机端进行百度贴吧批量签到的python3脚本。 2017
-## 更新
+##更新
 
 2017.2.11
 
@@ -20,11 +20,11 @@
 
 发布 TiebaSign
 
-## 环境要求
+##环境要求
 1. python3
 2. requests Lib
 
-## 使用说明
+##使用说明
 1.在**服务端**登陆你的百度账号(推荐用chrome+EditThisCookie插件)
 
 2.打开网页 https://tieba.baidu.com/index.html
@@ -52,7 +52,7 @@
 4.运行main.py
 环境变量 export PYTHONIOENCODING="utf-8"
 
-## 输出样本
+##输出样本
 ```
 jzc@125295:~$ export PYTHONIOENCODING="utf-8"
 jzc@125295:~$ echo $PYTHONIOENCODING
