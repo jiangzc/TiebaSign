@@ -14,7 +14,7 @@ def main():
     print("Local Time:", time.asctime(time.localtime()))
     # Email
     print("Login Email, waiting......")
-    gmail = Email("qq985811440@gmail.com", "Q110110110")
+    gmail = Email("***", "***")
 
     # Redirect Standard Output
     Tool.redirection.enter()
