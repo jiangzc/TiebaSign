@@ -27,7 +27,10 @@ def load_cookies_path(dirpath):
     files_name = [x for x in os.listdir(dirpath) if x.endswith(".json") or x.endswith(".cookie")]
     cookies = list()
     for file in files_name:
-        cookies.append(load_cookies_file(file))
+        with open(file, 'r') as f:
+            content = f.read()
+            if "BDUSS" in content:
+                cookies.append(load_cookies_file(file))
     return cookies
 
 
@@ -79,5 +82,5 @@ class dashboard(object):
 
 redirection = dashboard()
 chdir()
-with open(os.path.join(".", "admin.info"), "r") as f:
+with open(os.path.join(".", "admin.json"), "r") as f:
     admin = json.loads(f.read())
