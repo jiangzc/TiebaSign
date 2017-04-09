@@ -1,26 +1,22 @@
 # -*- coding: utf-8 -*-
 import Tool
-import os
-import sys
 import time
 from mail import Email
 from Tieba import Tieba
-
-
-PATH = os.path.abspath(os.path.dirname(sys.argv[0]))
 
 
 def main():
     print("Local Time:", time.asctime(time.localtime()))
     # Email
     print("Login Email, waiting......")
-    gmail = Email("***", "***")
+    gmail = Email()
 
     # Redirect Standard Output
     Tool.redirection.enter()
-    Tool.redirection.to_console()
+    Tool.redirection.pass_to_console()
+
     # Read Cookies
-    cookies = Tool.load_cookies_path(PATH)
+    cookies = Tool.load_cookies_path(".")
     for cookie in cookies:
        # Login
         user = Tieba(cookie)
@@ -37,7 +33,7 @@ def main():
     # Exit
     Tool.redirection.exit()
     gmail.close()
-    #print(Tool.redirection.history)
+    # print(Tool.redirection.history)
 
 
 main()
