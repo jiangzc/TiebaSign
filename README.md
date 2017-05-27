@@ -69,11 +69,10 @@ utf-8
 jzc@125295:~$ python3 /home/jzc/Tieba/main.py
 ```
 ```
-Login: 53y7fhy
-Already signed in 鬼
-Already signed in oblivious
-
+Local Time: Sat May 27 18:30:44 2017
 Login: 末日V4
+['vb2010', 'oblivious', '尤里的复仇', '红警3', 'python3']
+末日V4 Signing
 Already signed in vb2010
 Already signed in oblivious
 Already signed in 尤里的复仇
