@@ -79,5 +79,3 @@ class dashboard(object):
 
 redirection = dashboard()
 chdir()
-with open(os.path.join(".", "admin.info"), "r") as f:
-    admin = json.loads(f.read())

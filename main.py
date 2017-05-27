@@ -6,9 +6,6 @@ from Tieba import Tieba
 
 def main():
     print("Local Time:", time.asctime(time.localtime()))
-    # Redirect Standard Output
-    Tool.redirection.enter()
-    Tool.redirection.pass_to_console()
 
     # Read Cookies
     cookies = Tool.load_cookies_path(".")
@@ -22,8 +19,5 @@ def main():
         for name in user.get_likes():
             if user.sign_Wap(name):
                 time.sleep(10)
-        Tool.redirection.clear()
-    # Exit
-    Tool.redirection.exit()
 
 main()
