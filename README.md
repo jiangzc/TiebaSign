@@ -1,6 +1,10 @@
 # TiebaSign
 贴吧签到，模拟手机端进行百度贴吧批量签到的python3脚本。 2017
 ## 更新
+2017.7.15
+
+更新文档
+
 2017.5.27
 
 修复master分支的BUG
@@ -61,13 +65,19 @@
 4.运行main.py
 环境变量 export PYTHONIOENCODING="utf-8"
 
+## 部署
+```bash
+jzc@ubuntu:~$ wget https://github.com/jiangzc/TiebaSign/archive/master.zip
+jzc@ubuntu:~$ unzip master.zip
+jzc@ubuntu:~$ mv TiebaSign-master/ TiebaSign/
+jzc@ubuntu:~$ cd TiebaSign/
+jzc@ubuntu:~/TiebaSign$ chmod +x main.py
+# add user's json file
+jzc@ubuntu:~/TiebaSign$ export PYTHONIOENCODING="utf-8"
+jzc@ubuntu:~/TiebaSign$ ./main.py
+```
+
 ## 输出样本
-```
-jzc@125295:~$ export PYTHONIOENCODING="utf-8"
-jzc@125295:~$ echo $PYTHONIOENCODING
-utf-8
-jzc@125295:~$ python3 /home/jzc/Tieba/main.py
-```
 ```
 Local Time: Sat May 27 18:30:44 2017
 Login: 末日V4
