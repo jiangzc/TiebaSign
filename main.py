@@ -7,7 +7,6 @@ from Tieba import Tieba
 
 def main():
     print("Local Time:", time.asctime(time.localtime()))
-
     # Read Cookies
     cookies = Tool.load_cookies_path(".")
     for cookie in cookies:
