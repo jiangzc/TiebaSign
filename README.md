@@ -1,7 +1,7 @@
 # TiebaSign
 贴吧签到，模拟手机端进行百度贴吧批量签到的python3脚本。 2017
 ## 更新
-2017.7.15
+2017.7.31
 
 更新文档
 
@@ -71,10 +71,9 @@ jzc@ubuntu:~$ wget https://github.com/jiangzc/TiebaSign/archive/master.zip
 jzc@ubuntu:~$ unzip master.zip
 jzc@ubuntu:~$ mv TiebaSign-master/ TiebaSign/
 jzc@ubuntu:~$ cd TiebaSign/
-jzc@ubuntu:~/TiebaSign$ chmod +x main.py
 # add user's json file
 jzc@ubuntu:~/TiebaSign$ export PYTHONIOENCODING="utf-8"
-jzc@ubuntu:~/TiebaSign$ ./main.py
+jzc@ubuntu:~/TiebaSign$ python3 main.py
 ```
 
 ## 输出样本
