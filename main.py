@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import Tool
 import time
@@ -7,6 +6,7 @@ from Tieba import Tieba
 
 def main():
     print("Local Time:", time.asctime(time.localtime()))
+
     # Read Cookies
     cookies = Tool.load_cookies_path(".")
     for cookie in cookies:
