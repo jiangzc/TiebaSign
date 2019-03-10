@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
-import Baidu
 import re
+import functools
+import Baidu
+import time
 
 
-def Retry(func):
+def retry(func):
+    @functools.wraps(func)
     def wrapper(*args, **kwargs):
         return func(*args, **kwargs) or func(*args, **kwargs) or func(*args, **kwargs)
+
     return wrapper
 
 
@@ -18,12 +22,12 @@ class Tieba(Baidu.Baidu):
         else:
             return ""
 
-    @Retry
+    @retry
     def _check_sign(self, tieba_name):
         res = self.session.get("http://tieba.baidu.com/mo/m?kw=" + tieba_name)
         return "已签到" in res.text
 
-    @Retry
+    @retry
     def get_likes(self):
         try:
             res = self.session.get("http://tieba.baidu.com/mo/")
@@ -32,10 +36,10 @@ class Tieba(Baidu.Baidu):
             res = self.session.get(likes_url)
             likes = re.findall('kw.+?">(.+?)<', res.text)
             return likes
-        except:
+        except BaseException:
             return False
 
-    def sign_Wap(self, tieba_name):
+    def sign_wap(self, tieba_name):
         if self._check_sign(tieba_name):
             print("Already signed in", tieba_name)
             return False
@@ -54,16 +58,21 @@ class Tieba(Baidu.Baidu):
             print("Fail to sign in", tieba_name)
             return False
 
+    def sign_all(self, delay):
+        for name in self.get_likes():
+            if self.sign_wap(name):
+                time.sleep(delay)
+
     def reply(self, tid, content):
         if 'p' in str(tid):
             # tid is an URL
             url = tid
-            tid = re.search("\d+", url).group(0)
+            tid = re.search(r"\d+", url).group(0)
         else:
             # tid is a string of numbers
             url = "http://tieba.baidu.com/p/" + str(tid)
         res = self.session.get(url)
-        fid = re.search("fid:'(\d+?)'", res.text).group(1)
+        fid = re.search(r"fid:'(\d+?)'", res.text).group(1)
         kw = re.search("kw:'(.+?)'", res.text).group(1)
         res = self.session.post(
             "http://tieba.baidu.com/f/commit/post/add",
@@ -82,7 +91,7 @@ class Tieba(Baidu.Baidu):
 
     def commit(self, tieba_name, title, content):
         url = "http://tieba.baidu.com/f?kw=" + tieba_name
-        fid = re.search("fid: (\d+)", self.session.get(url).text).group(1)
+        fid = re.search(r"fid: (\d+)", self.session.get(url).text).group(1)
         res = self.session.post(
             "http://tieba.baidu.com/f/commit/thread/add",
             data={
