@@ -14,7 +14,7 @@ def main():
         print(user.get_likes())
         # Sign
         print(user.username, "Signing")
-        user.sign_all(10)
+        user.sign_all(delay=10)
 
 
 main()

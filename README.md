@@ -4,8 +4,9 @@
 
 ## 环境要求
 1. python3
-2. requests Lib
+2. requests Lib  
 
+Win10 + Ubuntu 18.04 测试通过
 ## 使用说明
 1. 在**服务端**登陆你的百度账号
 2. 打开网页 https://tieba.baidu.com/index.html
@@ -62,7 +63,7 @@ Already signed in 红警3
 ```
 
 ## 更新记录
-2019.3.5
+2019.3.5  
 重构项目，更新README  
 2017.7.31  
 更新文档    
