@@ -17,4 +17,5 @@ def main():
         user.sign_all(delay=10)
 
 
-main()
+if __name__ == '__main__':
+    main()
