@@ -11,6 +11,7 @@ Win10 + Ubuntu 18.04 测试通过
 1. 在**服务端**登陆你的百度账号
 2. 打开网页 https://tieba.baidu.com/index.html
 3. 保存Cookie(两种方法)  
+    
     方法1： Chrome或Firefox浏览器抓包 保存为txt文件  
     格式如下：
     ```
@@ -37,8 +38,10 @@ Win10 + Ubuntu 18.04 测试通过
 
 4. 把user.json或user.txt放入Tieba文件夹
 5. 运行 run.py
-> Linux下可能需要环境变量 export PYTHONIOENCODING="utf-8"
 
+> 默认签到延时10秒钟，在run.py中可以修改delay参数
+
+> Linux下可能需要环境变量 export PYTHONIOENCODING="utf-8"  
 ## 部署
 ```bash
 jzc@ubuntu:~$ wget https://github.com/jiangzc/TiebaSign/archive/master.zip
